@@ -16,7 +16,7 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
            <div className="relative w-48 h-48 md:w-72 md:h-72 rounded-full overflow-hidden shadow-[0_20px_60px_-15px_rgba(6,182,212,0.2)] border border-white/10 group">
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-900/20 to-transparent opacity-50 mix-blend-overlay" />
               <img 
-                src="https://picsum.photos/800/800?grayscale" 
+                src="images/me.jpg" 
                 alt={content.photo_alt} 
                 className="object-cover w-full h-full hover:scale-105 transition-transform duration-1000 ease-out"
               />

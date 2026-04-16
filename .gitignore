@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# SSL bundle — contains private key, must not be pushed
+kravchenko-daniil.site-ssl-bundle/
+
+# Local artifacts
+/Agent
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

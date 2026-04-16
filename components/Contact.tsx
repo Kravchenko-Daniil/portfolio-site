@@ -26,12 +26,6 @@ const Contact: React.FC<ContactProps> = ({ content }) => {
                    <span className="text-cyan-400 font-mono">{content.email}</span>
                 </div>
              </a>
-             <a href={content.website} target="_blank" rel="noreferrer" className="block w-full p-6 rounded-xl bg-zinc-900 border border-white/10 hover:border-cyan-500/50 hover:bg-zinc-800 transition-all group">
-                <div className="flex justify-between items-center">
-                   <span className="text-zinc-400 group-hover:text-white transition-colors">Website</span>
-                   <span className="text-cyan-400 font-mono">{content.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span>
-                </div>
-             </a>
              <a href={content.facebook} target="_blank" rel="noreferrer" className="block w-full p-6 rounded-xl bg-zinc-900 border border-white/10 hover:border-cyan-500/50 hover:bg-zinc-800 transition-all group">
                 <div className="flex justify-between items-center">
                    <span className="text-zinc-400 group-hover:text-white transition-colors">Facebook</span>

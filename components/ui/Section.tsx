@@ -15,7 +15,7 @@ const Section: React.FC<SectionProps> = ({ id, className = "", children }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`py-20 md:py-32 relative ${className}`}
+      className={`py-20 md:py-32 relative scroll-mt-20 ${className}`}
     >
       {children}
     </motion.section>

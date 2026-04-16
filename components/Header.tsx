@@ -8,7 +8,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ lang, setLang, content }) => {
-  const navIds = ["story", "now", "operate", "life", "achievements", "career", "goals", "contact"];
+  const navIds = ["story", "now", "operate", "life", "achievements", "career", "projects", "goals", "contact"];
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -21,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, content }) => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-white/5 h-16 md:h-20">
       <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
         {/* Brand */}
-        <div 
+        <div
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="text-xl font-bold text-white tracking-tight cursor-pointer hover:text-cyan-400 transition-colors"
         >
@@ -46,21 +46,19 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, content }) => {
         <div className="flex items-center gap-2 bg-zinc-900 rounded-full p-1 border border-white/10">
           <button
             onClick={() => setLang('en')}
-            className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
-              lang === 'en' 
-                ? 'bg-zinc-800 text-white shadow-sm' 
+            className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${lang === 'en'
+                ? 'bg-zinc-800 text-white shadow-sm'
                 : 'text-zinc-500 hover:text-zinc-300'
-            }`}
+              }`}
           >
             {content.toggle.en}
           </button>
           <button
             onClick={() => setLang('ru')}
-            className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
-              lang === 'ru' 
-                ? 'bg-zinc-800 text-white shadow-sm' 
+            className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${lang === 'ru'
+                ? 'bg-zinc-800 text-white shadow-sm'
                 : 'text-zinc-500 hover:text-zinc-300'
-            }`}
+              }`}
           >
             {content.toggle.ru}
           </button>

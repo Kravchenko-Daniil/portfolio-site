@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kravchenko-site
+    ports:
+      - "58080:80"
+    restart: unless-stopped
