@@ -1,62 +1,154 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daniil | Backend & Automation Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
-            colors: {
-              background: '#0a0a0a',
-              surface: '#121212',
-              primary: '#38bdf8', // Sky 400
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      body {
-        background-color: #050505;
-        color: #f4f4f5;
-      }
-      /* Hide scrollbar for clean look */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #0a0a0a;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #27272a;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #3f3f46;
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "framer-motion": "https://esm.sh/framer-motion@^12.25.0"
-  }
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Даниил Кравченко</title>
+<meta name="description" content="Даниил Кравченко — личный сайт. Проекты, продукты и контакты.">
+<meta name="theme-color" content="#F7F6F3">
+<link rel="preload" href="assets/fonts/unbounded-600-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/unbounded-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Unbounded держит эффект разрезанного имени — ждём его, а не подменяем системным */
+@font-face{font-family:'Unbounded';font-style:normal;font-weight:600;font-display:block;src:url(assets/fonts/unbounded-600-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Unbounded';font-style:normal;font-weight:600;font-display:block;src:url(assets/fonts/unbounded-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Golos Text';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/golos-text-400-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Golos Text';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/golos-text-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Golos Text';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/golos-text-500-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Golos Text';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/golos-text-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#F7F6F3;color:#16201E;font:400 16px/1.5 'Golos Text',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#16201E;text-decoration:none}
+a:hover{color:#0A6B66}
+a:focus-visible{outline:2px solid #0A6B66;outline-offset:3px;border-radius:2px}
+/* --n — кегль имени; --cut — ширина «Кравчен» в кеглях: по этой границе проходит край фотополосы */
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.screen{position:relative;height:100dvh;overflow:hidden;scroll-snap-align:start;--n:min(9.7vw,200px);--cut:5.248;--pad:72px;--base:26vh}
+html[lang="en"] .screen{--cut:5.699}
+.stripe{position:absolute;left:0;right:0;bottom:calc(var(--base) - 4px);height:calc(1.12*var(--n));background:#81D8D0;z-index:1}
+.photo{position:absolute;left:calc(var(--pad) + var(--cut)*var(--n));right:0;top:0;bottom:0;overflow:hidden;z-index:3}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:52% 16%;display:block}
+.name{position:absolute;left:var(--pad);bottom:var(--base);margin:0;z-index:2;font-family:'Unbounded',sans-serif;font-weight:600;font-size:var(--n);line-height:1.06;letter-spacing:-.03em;white-space:nowrap}
+.name span{display:block}
+.overwrap{position:absolute;left:calc(var(--pad) + var(--cut)*var(--n));right:0;top:0;bottom:0;overflow:hidden;z-index:4;pointer-events:none}
+.nover{position:absolute;left:calc(-1*var(--cut)*var(--n));bottom:var(--base);margin:0;font-family:'Unbounded',sans-serif;font-weight:600;font-size:var(--n);line-height:1.06;letter-spacing:-.03em;white-space:nowrap;color:#F7F6F3}
+.nover span{display:block}
+.pages{position:absolute;left:var(--pad);top:96px;z-index:5;font-size:16.5px;font-weight:500}
+.pages a{border-bottom:1px solid rgba(22,32,30,.32);padding-bottom:2px}
+.pages a:hover{border-bottom-color:#0A6B66}
+.pages i{font-style:normal;display:inline-block;margin-left:7px}
+.cts{position:absolute;left:var(--pad);bottom:76px;z-index:5;margin:0;padding:0;list-style:none;display:flex;gap:38px}
+.cts .lab{display:block;font-size:12px;line-height:1;color:#5B6560;margin-bottom:6px}
+.cts a{font-size:16.5px;font-weight:500;border-bottom:1px solid rgba(22,32,30,.32);padding-bottom:2px}
+.cts a:hover{border-bottom-color:#0A6B66}
+.scrim{display:none}
+.lang{position:absolute;left:var(--pad);top:142px;z-index:6;display:flex;gap:5px;align-items:center;font-size:12.5px;color:#5B6560}
+.lang button{all:unset;cursor:pointer;padding:2px 1px}
+.lang button:hover{color:#16201E}
+.lang button:focus-visible{outline:2px solid #0A6B66;outline-offset:2px}
+html[lang="ru"] .lang [data-l="ru"],html[lang="en"] .lang [data-l="en"]{color:#16201E}
+html[lang="ru"] .en,html[lang="en"] .ru{display:none}
+.rise{animation:rise .75s cubic-bezier(.22,.7,.25,1) both}
+.name,.nover{animation-delay:.04s}
+.photo{animation-delay:.1s}
+.cts{animation-delay:.2s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rise{animation:none}}
+@media (max-width:1240px) and (min-width:861px){
+.screen{--pad:48px;--n:min(10.2vw,140px);--base:36vh}
+.pages{top:76px}
+.cts{display:grid;gap:12px;bottom:48px}
+.cts .lab{font-size:11.5px;margin-bottom:4px}
+.cts a{font-size:15.5px}
+.cts .mail a{font-size:14.5px}
+.lang{top:120px}
 }
-</script>
+@media (min-width:861px) and (max-height:660px){
+.screen{--base:34vh;--n:min(8.4vw,120px)}
+.pages{top:52px}
+.cts{display:grid;gap:11px;bottom:36px}
+.lang{top:94px}
+}
+@media (max-width:860px){
+.screen{overflow-x:hidden;--n:min(10.4vw,42px);--pad:24px;--base:65.8vh}
+.photo{left:0;top:auto;height:64.5vh}
+.photo img{object-position:50% 12%}
+.overwrap{display:none}
+.pages{top:32px;font-size:15.5px}
+.scrim{display:block;position:absolute;left:0;right:0;bottom:0;height:34vh;background:linear-gradient(rgba(10,20,18,0),rgba(10,20,18,.74));z-index:4}
+.cts{bottom:34px;display:grid;gap:14px;z-index:5;color:#F7F6F3}
+.cts .lab{color:#C3D2CF;font-size:11.5px;margin-bottom:4px}
+.cts a{color:#F7F6F3;font-size:15px;border-bottom-color:rgba(247,246,243,.45)}
+.cts a:hover{color:#fff;border-bottom-color:#fff}
+.cts .mail a{font-size:13.5px}
+.lang{left:var(--pad);right:auto;top:70px;color:#5B6560}
+.lang button:hover{color:#16201E}
+html[lang="ru"] .lang [data-l="ru"],html[lang="en"] .lang [data-l="en"]{color:#16201E}
+}
+@media (max-width:860px) and (max-height:740px){
+.screen{--n:min(9.6vw,38px);--base:64vh}
+.photo{height:62.5vh}
+}
+.work{position:relative;height:100dvh;display:grid;align-content:center;scroll-snap-align:start;overflow:hidden}
+.work .rule{position:absolute;left:0;top:0;height:8px;background:#81D8D0;width:100%}
+.list{margin:0 auto;padding:0 40px;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:72px;max-width:820px;justify-items:center;text-align:center}
+.row{display:block}
+.txt{display:block}
+.ic{position:relative;width:216px;max-width:100%;aspect-ratio:1;border-radius:50%;background:#EDECE7;border:1px solid rgba(22,32,30,.1);display:grid;place-items:center;overflow:hidden;margin:0 auto;transition:background .25s,border-color .25s}
+.ic span{font:400 11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;color:#8A938F}
+.ic img{width:100%;height:100%;object-fit:cover;display:block}
+a.row:hover .ic{background:#81D8D0;border-color:#81D8D0}
+a.row:hover .ic span{color:#0F4F4C}
+.nm{display:block;margin-top:26px;font-family:'Unbounded',sans-serif;font-weight:600;font-size:min(2.6vw,24px);line-height:1.15;letter-spacing:-.02em;transition:color .2s}
+a.row:hover .nm{color:#0A6B66}
+.dsc{display:block;margin:11px auto 0;font-size:15.5px;line-height:1.5;color:#4A544F;max-width:30ch;text-wrap:pretty}
+.href{display:inline-block;margin-top:14px;font-size:14px;color:#5B6560;border-bottom:1px solid rgba(22,32,30,.3);padding-bottom:2px;transition:color .2s,border-color .2s}
+.soon{display:inline-block;margin-top:14px;font-size:14px;color:#8A938F}
+a.row:hover .href{color:#0A6B66;border-bottom-color:#0A6B66}
+.note{margin:64px auto 0;padding:0 40px;max-width:1120px;font-size:14px;color:#7A847F;text-align:center}
+@media (max-width:860px){
+.work{padding:0}
+.work .rule{height:6px}
+.list{padding:0 24px;grid-template-columns:minmax(0,1fr);gap:30px;justify-items:stretch}
+.list li{min-width:0}
+.row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:22px;align-items:center;text-align:left}
+.ic{width:96px;margin:0}
+.txt{min-width:0}
+.nm{margin-top:0;font-size:20px}
+.dsc{margin:7px 0 0;font-size:14.5px;max-width:100%}
+.href{margin-top:9px;font-size:13.5px}
+.note{margin-top:44px;padding:0 24px}
+}
+</style>
 </head>
-  <body>
-    <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
+<body>
+<main class="screen">
+<div class="stripe"></div>
+<h1 class="name rise"><span class="ru">Даниил</span><span class="en">Daniil</span><span class="ru">Кравченко</span><span class="en">Kravchenko</span></h1>
+<div class="photo rise"><img src="assets/photo.jpg" alt="Даниил Кравченко" width="853" height="1280"></div>
+<div class="overwrap"><div class="nover rise" aria-hidden="true"><span class="ru">Даниил</span><span class="en">Daniil</span><span class="ru">Кравченко</span><span class="en">Kravchenko</span></div></div>
+<div class="scrim"></div>
+<div class="pages"><a href="#work"><span class="ru">Проекты и продукты</span><span class="en">Projects and products</span><i>↓</i></a></div>
+<ul class="cts rise">
+<li><span class="lab">Telegram</span><a href="https://t.me/ddkravchenko">@ddkravchenko</a></li>
+<li><span class="lab">Instagram</span><a href="https://instagram.com/krav4enko_dd">krav4enko_dd</a></li>
+<li class="mail"><span class="lab"><span class="ru">Почта</span><span class="en">Email</span></span><a href="mailto:krawchenkodaniil@gmail.com">krawchenkodaniil@gmail.com</a></li>
+</ul>
+<div class="lang"><button data-l="ru" type="button">RU</button><span>/</span><button data-l="en" type="button">EN</button></div>
+</main>
+<section class="work" id="work">
+<div class="rule"></div>
+<ul class="list">
+<li><a class="row" href="https://t.me/daniil_scribe_bot"><span class="ic"><img src="assets/scribe-it.png" alt="" width="512" height="512" loading="lazy"></span><span class="txt"><span class="nm">scribe-it</span><span class="dsc"><span class="ru">Видео, аудио и ссылки — в текст с таймкодами и разбивкой по спикерам.</span><span class="en">Turns video, audio and links into clean text with timecodes and speakers.</span></span><span class="href">@daniil_scribe_bot</span></span></a></li>
+<li><span class="row"><span class="ic"></span><span class="txt"><span class="nm">zeroroutine</span><span class="soon"><span class="ru">скоро</span><span class="en">soon</span></span></span></span></li>
+</ul>
+</section>
+<script>
+(function(){var s=null;try{s=localStorage.getItem('dk-lang')}catch(e){}
+if(s==='ru'||s==='en')document.documentElement.lang=s;
+document.addEventListener('click',function(e){var b=e.target.closest('.lang button');if(!b)return;document.documentElement.lang=b.dataset.l;try{localStorage.setItem('dk-lang',b.dataset.l)}catch(err){}});})();
+</script>
 </body>
 </html>

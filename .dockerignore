@@ -1,11 +1,8 @@
-node_modules
-dist
 .git
 .gitignore
 Dockerfile
 README.md
+CNAME
+kravchenko-daniil.site-ssl-bundle
 *.log
 tmp
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
